@@ -11,7 +11,7 @@ public class Assignment1Test {
   public void getUsernameTest(){
     //Dates are all set to today, but doesn't cause any issues with testing
     CourseProgramme testCourse = new CourseProgramme("CS&IT", new DateTime(), new DateTime());
-    Student student = new Student("AliceSmith", 20, new DateTime(), testCourse);
+    Student student = new Student("Alice Smith", 20, new DateTime(), testCourse);
     String username = student.getUsername();
     assertEquals("AliceSmith20", username);
   }
@@ -23,7 +23,7 @@ public class Assignment1Test {
     Module m3 = new Module("Modern Information Management", "CT422");
 
     CourseProgramme testCourse = new CourseProgramme("CS&IT", new DateTime(), new DateTime());
-    Student student = new Student("AliceSmith", 20, new DateTime(), testCourse);
+    Student student = new Student("Alice Smith", 20, new DateTime(), testCourse);
 
     testCourse.addModule(m1);
     testCourse.addModule(m2);

@@ -18,7 +18,11 @@ public class Student {
   }
 
   public String getUsername(){
-    String username = name + age;
+    String username = "";
+    for(String substring : name.split(" ")){
+      username = username + substring;
+    }
+    username = username + age;
     return username;
   }
 
