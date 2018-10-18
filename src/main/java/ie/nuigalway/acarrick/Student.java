@@ -2,12 +2,15 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 
 public class Student {
-  protected String name;
-  protected int age;
-  protected DateTime dob;
-  protected ArrayList<Module> modules;
-  protected CourseProgramme course;
+  private String name;
+  private int age;
+  private DateTime dob;
+  private ArrayList<Module> modules;
+  private CourseProgramme course;
 
+  /*
+  Constructor
+  */
   public Student(String name, int age, DateTime dob, CourseProgramme course){
     this.name = name;
     this.age = age;
@@ -17,6 +20,10 @@ public class Student {
     modules = new ArrayList<Module>();
   }
 
+  /*
+  getUsername method concatenates name and age of student
+  */
+
   public String getUsername(){
     String username = "";
     for(String substring : name.split(" ")){
@@ -24,6 +31,18 @@ public class Student {
     }
     username = username + age;
     return username;
+  }
+
+  /*
+  Mutator Methods
+  */
+
+  public String getName(){
+    return this.name;
+  }
+
+  public void setName(String newName){
+    this.name = newName;
   }
 
   public void addModule(Module m){
@@ -48,19 +67,31 @@ public class Student {
     }
   }
 
-  public void switchCourse(CourseProgramme newCourse){
+  public ArrayList<Module> getModules(){
+    return this.modules;
+  }
+
+  public void setCourse(CourseProgramme newCourse){
     course.removeStudent(this);
     course = newCourse;
     course.addStudent(this);
-    //TODO: Remove modules as well? For now, leave alone.
+    for(Module m : modules) this.removeModule(m);
+  }
+
+  public CourseProgramme getCourse(){
+    return this.course;
+  }
+
+  /*
+  Methods for checking membership
+  */
+  public boolean isInModule(Module m){
+    return modules.contains(m);
   }
 
   public boolean isInCourse(CourseProgramme c){
     return course.equals(c);
   }
 
-  public boolean isInModule(Module m){
-    return modules.contains(m);
-  }
 
 }

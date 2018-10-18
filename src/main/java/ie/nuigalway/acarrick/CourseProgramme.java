@@ -2,12 +2,15 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 
 public class CourseProgramme {
-  public String courseName;
-  public ArrayList<Module> modules;
-  public ArrayList<Student> enrolledStudents;
-  public DateTime startDate;
-  public DateTime endDate;
+  private String courseName;
+  private ArrayList<Module> modules;
+  private ArrayList<Student> enrolledStudents;
+  private DateTime startDate;
+  private DateTime endDate;
 
+  /*
+  Constructor
+  */
   public CourseProgramme(String courseName, DateTime startDate, DateTime endDate){
     this.courseName = courseName;
     this.startDate = startDate;
@@ -16,6 +19,10 @@ public class CourseProgramme {
     enrolledStudents = new ArrayList<Student>();
   }
 
+
+  /*
+  Mutator methods
+  */
   public void addModule(Module m){
     if(!modules.contains(m)){
       modules.add(m);
@@ -32,21 +39,58 @@ public class CourseProgramme {
     }
   }
 
-  protected void addStudent(Student s){
+  public ArrayList<Module> getModules(){
+    return this.modules;
+  }
+
+  public void addStudent(Student s){
     if(!enrolledStudents.contains(s)){
       enrolledStudents.add(s);
     }
   }
 
-  protected void removeStudent(Student s){
+  public void removeStudent(Student s){
     enrolledStudents.remove(s);
   }
 
+  public ArrayList<Student> getStudents(){
+    return this.enrolledStudents;
+  }
+
+  public String getName(){
+    return this.courseName;
+  }
+
+  public void setName(String name){
+    this.courseName = name;
+  }
+
+  public DateTime getStartDate(){
+    return this.startDate;
+  }
+
+  public void setStartDate(DateTime dt){
+    this.startDate = dt;
+  }
+
+  public DateTime getEndDate(){
+    return this.endDate;
+  }
+
+  public void setEndDate(DateTime dt){
+    this.endDate = dt;
+  }
+
+  /*
+  Methods for checking membership
+  */
+
   public boolean hasModule(Module m){
-    if(modules.contains(m)){
-      return true;
-    }
-    return false;
+    return modules.contains(m);
+  }
+
+  public boolean hasStudent(Student s){
+    return enrolledStudents.contains(s);
   }
 
 }

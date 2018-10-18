@@ -1,16 +1,39 @@
 import java.util.ArrayList;
 
 public class Module {
-  public String name;
-  public String id;
-  public ArrayList<Student> students;
-  public ArrayList<CourseProgramme> courses;
+  private String name;
+  private String id;
+  private ArrayList<Student> students;
+  private ArrayList<CourseProgramme> courses;
 
+  /*
+  Constructor
+  */
   public Module(String name, String id){
     this.name = name;
     this.id = id;
     students = new ArrayList<Student>();
     courses = new ArrayList<CourseProgramme>();
+  }
+
+  /*
+  Mutator methods
+  */
+
+  public String getName(){
+    return this.name;
+  }
+
+  public void setName(String name){
+    this.name = name;
+  }
+
+  public String getId(){
+    return this.id;
+  }
+
+  public void setId(String id){
+    this.id = id;
   }
 
   public void addStudent(Student s){
@@ -34,6 +57,10 @@ public class Module {
     }
   }
 
+  public ArrayList<Student> getStudents(){
+    return students;
+  }
+
   public void addCourse(CourseProgramme course){
     //Add course to this module
     if(!courses.contains(course)){
@@ -53,6 +80,14 @@ public class Module {
       course.removeModule(this);
     }
   }
+
+  public ArrayList<CourseProgramme> getCourses(){
+    return this.courses;
+  }
+
+  /*
+  methods for checking membership
+  */
 
   public boolean hasStudent(Student s){
     return students.contains(s);
