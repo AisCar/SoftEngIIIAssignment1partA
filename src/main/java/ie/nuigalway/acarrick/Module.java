@@ -38,7 +38,7 @@ public class Module {
 
   public void addStudent(Student s){
     //Student can only join module if module is associated with their course
-    if(courses.contains(s.course)){
+    if(courses.contains(s.getCourse())){
       //Add student to this module
       students.add(s);
       //Add this module to student
